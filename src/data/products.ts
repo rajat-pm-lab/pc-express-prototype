@@ -193,12 +193,121 @@ export const aiSearchResults: Record<string, AISearchResult> = {
       },
     ],
   },
+  'thai green curry': {
+    query: 'thai green curry',
+    interpretation: 'Thai green curry dinner',
+    categories: [
+      {
+        name: 'Protein', emoji: '🍗',
+        items: [
+          { id: 300, name: 'PC Chicken Thighs Boneless', size: 'per kg', price: 11.99, image: '🦵', availability: 'in_stock', points: 350 },
+        ],
+      },
+      {
+        name: 'Curry Base', emoji: '🍛',
+        items: [
+          { id: 301, name: 'Thai Kitchen Green Curry Paste', size: '112g', price: 3.99, image: '🌶️', availability: 'in_stock', points: 120 },
+          { id: 302, name: 'Thai Kitchen Coconut Milk', size: '400ml', price: 2.49, image: '🥥', availability: 'in_stock', points: 75 },
+          { id: 303, name: 'Fish Sauce', size: '200ml', price: 3.49, image: '🍶', availability: 'in_stock', points: 100 },
+        ],
+      },
+      {
+        name: 'Vegetables', emoji: '🥬',
+        items: [
+          { id: 304, name: 'Thai Basil', size: 'bunch', price: 2.49, image: '🌿', availability: 'in_stock', points: 75 },
+          { id: 305, name: 'Red Bell Pepper', size: 'each', price: 1.99, image: '🫑', availability: 'in_stock', points: 60 },
+          { id: 306, name: 'Bamboo Shoots', size: '227g can', price: 1.99, image: '🎋', availability: 'in_stock', points: 60 },
+          { id: 307, name: 'Baby Bok Choy', size: '300g', price: 2.99, image: '🥬', availability: 'low_stock', points: 90 },
+        ],
+      },
+      {
+        name: 'Rice', emoji: '🍚',
+        items: [
+          { id: 308, name: 'PC Jasmine Rice', size: '900g', price: 3.99, image: '🍚', availability: 'in_stock', points: 120 },
+        ],
+      },
+    ],
+  },
+  'homemade pizza': {
+    query: 'homemade pizza',
+    interpretation: 'Pizza night ingredients',
+    categories: [
+      {
+        name: 'Dough & Base', emoji: '🍕',
+        items: [
+          { id: 310, name: 'PC Pizza Dough', size: '450g', price: 3.49, image: '🍕', availability: 'in_stock', points: 100 },
+          { id: 311, name: 'Classico Pizza Sauce', size: '396ml', price: 3.29, image: '🫙', availability: 'in_stock', points: 100 },
+        ],
+      },
+      {
+        name: 'Cheese', emoji: '🧀',
+        items: [
+          { id: 312, name: 'PC Shredded Mozzarella', size: '320g', price: 5.49, image: '🧀', availability: 'in_stock', points: 160 },
+          { id: 313, name: 'Parmesan Cheese Grated', size: '250g', price: 7.99, image: '🧀', availability: 'in_stock', points: 240 },
+        ],
+      },
+      {
+        name: 'Toppings', emoji: '🫒',
+        items: [
+          { id: 314, name: 'PC Pepperoni Sliced', size: '250g', price: 5.49, image: '🥓', availability: 'in_stock', points: 160 },
+          { id: 315, name: 'Mushrooms White', size: '227g', price: 2.99, image: '🍄', availability: 'in_stock', points: 90 },
+          { id: 316, name: 'Green Bell Pepper', size: 'each', price: 1.49, image: '🫑', availability: 'in_stock', points: 45 },
+          { id: 317, name: 'Black Olives Sliced', size: '375ml', price: 2.99, image: '🫒', availability: 'in_stock', points: 90 },
+          { id: 318, name: 'Red Onion', size: 'each', price: 0.99, image: '🟣', availability: 'in_stock', points: 30 },
+        ],
+      },
+      {
+        name: 'Extras', emoji: '🌿',
+        items: [
+          { id: 319, name: 'Fresh Basil', size: 'bunch', price: 2.49, image: '🌿', availability: 'in_stock', points: 75 },
+          { id: 320, name: 'Olive Oil Extra Virgin', size: '500ml', price: 6.99, image: '🫒', availability: 'in_stock', points: 210 },
+        ],
+      },
+    ],
+  },
+  'red sauce pasta': {
+    query: 'red sauce pasta',
+    interpretation: 'Classic pasta with red sauce',
+    categories: [
+      {
+        name: 'Pasta', emoji: '🍝',
+        items: [
+          { id: 330, name: 'Barilla Penne Rigate', size: '454g', price: 2.49, image: '🍝', availability: 'in_stock', points: 75 },
+          { id: 331, name: 'Barilla Spaghetti', size: '454g', price: 2.49, image: '🍝', availability: 'in_stock', points: 75 },
+        ],
+      },
+      {
+        name: 'Sauce', emoji: '🫙',
+        items: [
+          { id: 332, name: 'Classico Tomato Basil Sauce', size: '650ml', price: 3.99, image: '🫙', availability: 'in_stock', points: 120 },
+          { id: 333, name: 'Crushed Tomatoes', size: '796ml', price: 2.49, image: '🍅', availability: 'in_stock', points: 75 },
+        ],
+      },
+      {
+        name: 'Produce', emoji: '🧄',
+        items: [
+          { id: 334, name: 'Garlic', size: '3 pack', price: 1.49, image: '🧄', availability: 'in_stock', points: 45 },
+          { id: 335, name: 'Fresh Basil', size: 'bunch', price: 2.49, image: '🌿', availability: 'in_stock', points: 75 },
+          { id: 336, name: 'Yellow Onion', size: 'each', price: 0.99, image: '🧅', availability: 'in_stock', points: 30 },
+        ],
+      },
+      {
+        name: 'Dairy & Extras', emoji: '🧀',
+        items: [
+          { id: 337, name: 'Parmesan Cheese', size: '250g', price: 7.99, image: '🧀', availability: 'in_stock', points: 240 },
+          { id: 338, name: 'Olive Oil Extra Virgin', size: '500ml', price: 6.99, image: '🫒', availability: 'in_stock', points: 210 },
+          { id: 339, name: 'PC Garlic Bread Frozen', size: '340g', price: 3.99, image: '🍞', availability: 'in_stock', points: 120 },
+        ],
+      },
+    ],
+  },
 };
 
 // NLP trigger patterns
 const aiTriggerPatterns = [
   'stuff for', 'ingredients for', 'things for', 'what do i need for',
   'make ', 'recipe for', 'dinner', 'lunch', 'breakfast', 'stir fry',
+  'curry', 'pizza', 'pasta', 'thai', 'red sauce',
 ];
 
 export function isAIQuery(query: string): boolean {
@@ -215,6 +324,9 @@ export function getAIResult(query: string): AISearchResult | null {
   if (lower.includes('taco')) return aiSearchResults['stuff for tacos'];
   if (lower.includes('breakfast')) return aiSearchResults['breakfast for the week'];
   if (lower.includes('stir fry') || lower.includes('stirfry')) return aiSearchResults['chicken stir fry'];
+  if (lower.includes('thai') || lower.includes('green curry') || lower.includes('curry')) return aiSearchResults['thai green curry'];
+  if (lower.includes('pizza')) return aiSearchResults['homemade pizza'];
+  if (lower.includes('red sauce') || lower.includes('pasta') || lower.includes('spaghetti') || lower.includes('penne')) return aiSearchResults['red sauce pasta'];
   return null;
 }
 
@@ -372,6 +484,39 @@ export const altMeals: Meal[] = [
       { product: { id: 263, name: 'Kraft Singles Cheese', size: '24 slices', price: 5.99, image: '🧀', availability: 'in_stock', points: 180 }, quantity: 1, unit: 'pack', category: 'dairy' },
       { product: { id: 205, name: 'Tomatoes on the Vine', size: 'per lb', price: 2.99, image: '🍅', availability: 'in_stock', points: 90 }, quantity: 1, unit: 'lb', category: 'produce' },
       { product: { id: 206, name: 'Romaine Lettuce', size: 'each', price: 2.49, image: '🥬', availability: 'in_stock', points: 75 }, quantity: 1, unit: 'head', category: 'produce' },
+    ],
+  },
+  {
+    id: 8, name: 'Thai Green Curry', emoji: '🍛', cuisine: 'Thai', prepTime: '25 min',
+    ingredients: [
+      { product: { id: 300, name: 'PC Chicken Thighs Boneless', size: 'per kg', price: 11.99, image: '🦵', availability: 'in_stock', points: 350 }, quantity: 0.5, unit: 'kg', category: 'protein' },
+      { product: { id: 301, name: 'Thai Kitchen Green Curry Paste', size: '112g', price: 3.99, image: '🌶️', availability: 'in_stock', points: 120 }, quantity: 1, unit: 'jar', category: 'pantry' },
+      { product: { id: 302, name: 'Thai Kitchen Coconut Milk', size: '400ml', price: 2.49, image: '🥥', availability: 'in_stock', points: 75 }, quantity: 2, unit: 'cans', category: 'pantry' },
+      { product: { id: 307, name: 'Baby Bok Choy', size: '300g', price: 2.99, image: '🥬', availability: 'in_stock', points: 90 }, quantity: 1, unit: 'bag', category: 'produce' },
+      { product: { id: 305, name: 'Red Bell Pepper', size: 'each', price: 1.99, image: '🫑', availability: 'in_stock', points: 60 }, quantity: 1, unit: 'each', category: 'produce' },
+      { product: { id: 214, name: 'PC Jasmine Rice', size: '900g', price: 3.99, image: '🍚', availability: 'in_stock', points: 120 }, quantity: 1, unit: 'bag', category: 'pantry' },
+    ],
+  },
+  {
+    id: 9, name: 'Homemade Pizza', emoji: '🍕', cuisine: 'Italian', prepTime: '30 min',
+    ingredients: [
+      { product: { id: 310, name: 'PC Pizza Dough', size: '450g', price: 3.49, image: '🍕', availability: 'in_stock', points: 100 }, quantity: 2, unit: 'pkg', category: 'bakery' },
+      { product: { id: 311, name: 'Classico Pizza Sauce', size: '396ml', price: 3.29, image: '🫙', availability: 'in_stock', points: 100 }, quantity: 1, unit: 'jar', category: 'pantry' },
+      { product: { id: 312, name: 'PC Shredded Mozzarella', size: '320g', price: 5.49, image: '🧀', availability: 'in_stock', points: 160 }, quantity: 2, unit: 'bags', category: 'dairy' },
+      { product: { id: 314, name: 'PC Pepperoni Sliced', size: '250g', price: 5.49, image: '🥓', availability: 'in_stock', points: 160 }, quantity: 1, unit: 'pkg', category: 'protein' },
+      { product: { id: 315, name: 'Mushrooms White', size: '227g', price: 2.99, image: '🍄', availability: 'in_stock', points: 90 }, quantity: 1, unit: 'pkg', category: 'produce' },
+      { product: { id: 319, name: 'Fresh Basil', size: 'bunch', price: 2.49, image: '🌿', availability: 'in_stock', points: 75 }, quantity: 1, unit: 'bunch', category: 'produce' },
+    ],
+  },
+  {
+    id: 10, name: 'Red Sauce Pasta', emoji: '🍝', cuisine: 'Italian', prepTime: '20 min',
+    ingredients: [
+      { product: { id: 331, name: 'Barilla Spaghetti', size: '454g', price: 2.49, image: '🍝', availability: 'in_stock', points: 75 }, quantity: 1, unit: 'box', category: 'pantry' },
+      { product: { id: 332, name: 'Classico Tomato Basil Sauce', size: '650ml', price: 3.99, image: '🫙', availability: 'in_stock', points: 120 }, quantity: 1, unit: 'jar', category: 'pantry' },
+      { product: { id: 337, name: 'Parmesan Cheese', size: '250g', price: 7.99, image: '🧀', availability: 'in_stock', points: 240 }, quantity: 1, unit: 'wedge', category: 'dairy' },
+      { product: { id: 334, name: 'Garlic', size: '3 pack', price: 1.49, image: '🧄', availability: 'in_stock', points: 45 }, quantity: 1, unit: 'pack', category: 'produce' },
+      { product: { id: 335, name: 'Fresh Basil', size: 'bunch', price: 2.49, image: '🌿', availability: 'in_stock', points: 75 }, quantity: 1, unit: 'bunch', category: 'produce' },
+      { product: { id: 339, name: 'PC Garlic Bread Frozen', size: '340g', price: 3.99, image: '🍞', availability: 'in_stock', points: 120 }, quantity: 1, unit: 'box', category: 'frozen' },
     ],
   },
 ];
