@@ -216,7 +216,7 @@ export default function SearchPage() {
         <div className="text-center py-12 px-4">
           <p className="text-3xl mb-2">🔍</p>
           <p className="text-sm text-body">No results for "{query}"</p>
-          <p className="text-xs text-body mt-1">Try: onion, chicken, milk, bread, or "stuff for tacos"</p>
+          <p className="text-xs text-body mt-1">Try: chicken, milk, bread, or "stuff for tacos"</p>
         </div>
       )}
     </div>
