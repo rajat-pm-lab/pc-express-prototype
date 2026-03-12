@@ -62,6 +62,10 @@ interface AppState {
   setMealPlanPeople: (n: number) => void;
   mealPlanCount: number;
   setMealPlanCount: (n: number) => void;
+  mealDietPref: 'any' | 'veg' | 'vegan';
+  setMealDietPref: (pref: 'any' | 'veg' | 'vegan') => void;
+  mealCuisinePrefs: string[];
+  toggleCuisinePref: (cuisine: string) => void;
   mealPlan: MealPlan | null;
   generatePlan: () => void;
   shuffleMeal: (mealIndex: number) => void;
@@ -87,8 +91,8 @@ export const useStore = create<AppState>((set, get) => ({
     recentSearches: [query, ...s.recentSearches.filter(r => r !== query)].slice(0, 5),
   })),
 
-  // Cart
-  cart: checkoutCartItems.map(p => ({ product: p, quantity: p.id === 3 ? 2 : p.id === 4 ? 5 : p.id === 11 ? 2 : 1 })),
+  // Cart — starts empty, checkout demo loads items via resetCheckout
+  cart: [],
   addToCart: (product) => set(s => {
     const existing = s.cart.find(c => c.product.id === product.id);
     if (existing) {
@@ -170,6 +174,15 @@ export const useStore = create<AppState>((set, get) => ({
   setMealPlanPeople: (n) => set({ mealPlanPeople: n }),
   mealPlanCount: 5,
   setMealPlanCount: (n) => set({ mealPlanCount: n }),
+  mealDietPref: 'any',
+  setMealDietPref: (pref) => set({ mealDietPref: pref }),
+  mealCuisinePrefs: [],
+  toggleCuisinePref: (cuisine) => set(s => {
+    const prefs = s.mealCuisinePrefs.includes(cuisine)
+      ? s.mealCuisinePrefs.filter(c => c !== cuisine)
+      : [...s.mealCuisinePrefs, cuisine];
+    return { mealCuisinePrefs: prefs };
+  }),
   mealPlan: null,
   generatePlan: () => {
     const s = get();
@@ -231,7 +244,7 @@ export const useStore = create<AppState>((set, get) => ({
     }
     set({ cart: newCart, mealPlanPhase: 'added' });
   },
-  resetMealPlan: () => set({ mealPlanPhase: 'onboarding', mealPlan: null, mealPlanPeople: 3, mealPlanCount: 5 }),
+  resetMealPlan: () => set({ mealPlanPhase: 'onboarding', mealPlan: null, mealPlanPeople: 3, mealPlanCount: 5, mealDietPref: 'any', mealCuisinePrefs: [] }),
 
   // Demo
   demoOpen: false,

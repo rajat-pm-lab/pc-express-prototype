@@ -1,3 +1,5 @@
+export type DietTag = 'veg' | 'non-veg' | 'vegan';
+
 export interface Product {
   id: number;
   name: string;
@@ -7,6 +9,7 @@ export interface Product {
   availability: 'in_stock' | 'low_stock' | 'out_of_stock';
   points: number;
   sponsored?: boolean;
+  diet?: DietTag;
 }
 
 export interface AICategory {
@@ -86,38 +89,38 @@ export const aiSearchResults: Record<string, AISearchResult> = {
       {
         name: 'Protein', emoji: '🥩',
         items: [
-          { id: 20, name: 'Lean Ground Beef', size: '450g', price: 7.99, image: '🥩', availability: 'in_stock', points: 250 },
-          { id: 21, name: 'PC Seasoned Chicken Strips', size: '400g', price: 9.49, image: '🍗', availability: 'in_stock', points: 300 },
+          { id: 20, name: 'Lean Ground Beef', size: '450g', price: 7.99, image: '🥩', availability: 'in_stock', points: 250, diet: 'non-veg' },
+          { id: 21, name: 'PC Seasoned Chicken Strips', size: '400g', price: 9.49, image: '🍗', availability: 'in_stock', points: 300, diet: 'non-veg' },
         ],
       },
       {
         name: 'Tortillas & Wraps', emoji: '🌮',
         items: [
-          { id: 22, name: 'Old El Paso Taco Shells', size: '12 pack', price: 3.99, image: '🌮', availability: 'in_stock', points: 120 },
-          { id: 23, name: "Dempster's Flour Tortillas", size: '10 pack', price: 4.49, image: '🌮', availability: 'in_stock', points: 130 },
+          { id: 22, name: 'Old El Paso Taco Shells', size: '12 pack', price: 3.99, image: '🌮', availability: 'in_stock', points: 120, diet: 'vegan' },
+          { id: 23, name: "Dempster's Flour Tortillas", size: '10 pack', price: 4.49, image: '🌮', availability: 'in_stock', points: 130, diet: 'vegan' },
         ],
       },
       {
         name: 'Dairy', emoji: '🧀',
         items: [
-          { id: 24, name: 'PC Shredded Tex-Mex Cheese', size: '320g', price: 5.49, image: '🧀', availability: 'in_stock', points: 160 },
-          { id: 25, name: 'Sealtest Sour Cream', size: '500ml', price: 3.29, image: '🥄', availability: 'low_stock', points: 100 },
+          { id: 24, name: 'PC Shredded Tex-Mex Cheese', size: '320g', price: 5.49, image: '🧀', availability: 'in_stock', points: 160, diet: 'veg' },
+          { id: 25, name: 'Sealtest Sour Cream', size: '500ml', price: 3.29, image: '🥄', availability: 'low_stock', points: 100, diet: 'veg' },
         ],
       },
       {
         name: 'Produce', emoji: '🥑',
         items: [
-          { id: 26, name: 'Tomatoes on the Vine', size: 'per lb', price: 2.99, image: '🍅', availability: 'in_stock', points: 90 },
-          { id: 27, name: 'Romaine Lettuce', size: 'each', price: 2.49, image: '🥬', availability: 'in_stock', points: 75 },
-          { id: 28, name: 'Lime', size: 'each', price: 0.59, image: '🍋', availability: 'in_stock', points: 20 },
-          { id: 29, name: 'Avocado', size: 'each', price: 1.99, image: '🥑', availability: 'in_stock', points: 60 },
+          { id: 26, name: 'Tomatoes on the Vine', size: 'per lb', price: 2.99, image: '🍅', availability: 'in_stock', points: 90, diet: 'vegan' },
+          { id: 27, name: 'Romaine Lettuce', size: 'each', price: 2.49, image: '🥬', availability: 'in_stock', points: 75, diet: 'vegan' },
+          { id: 28, name: 'Lime', size: 'each', price: 0.59, image: '🍋', availability: 'in_stock', points: 20, diet: 'vegan' },
+          { id: 29, name: 'Avocado', size: 'each', price: 1.99, image: '🥑', availability: 'in_stock', points: 60, diet: 'vegan' },
         ],
       },
       {
         name: 'Pantry', emoji: '🫙',
         items: [
-          { id: 30, name: 'Old El Paso Taco Seasoning', size: '24g', price: 1.99, image: '🌶️', availability: 'in_stock', points: 60 },
-          { id: 31, name: 'Tostitos Medium Salsa', size: '423ml', price: 4.49, image: '🫙', availability: 'in_stock', points: 130 },
+          { id: 30, name: 'Old El Paso Taco Seasoning', size: '24g', price: 1.99, image: '🌶️', availability: 'in_stock', points: 60, diet: 'vegan' },
+          { id: 31, name: 'Tostitos Medium Salsa', size: '423ml', price: 4.49, image: '🫙', availability: 'in_stock', points: 130, diet: 'vegan' },
         ],
       },
     ],
@@ -129,31 +132,31 @@ export const aiSearchResults: Record<string, AISearchResult> = {
       {
         name: 'Eggs & Dairy', emoji: '🥚',
         items: [
-          { id: 40, name: 'PC Free Run Eggs', size: '12 pack', price: 4.99, image: '🥚', availability: 'in_stock', points: 150 },
-          { id: 41, name: 'Neilson 2% Milk', size: '4L', price: 6.49, image: '🥛', availability: 'in_stock', points: 200 },
-          { id: 42, name: 'PC Greek Yogurt Plain', size: '750g', price: 5.49, image: '🥛', availability: 'in_stock', points: 160 },
+          { id: 40, name: 'PC Free Run Eggs', size: '12 pack', price: 4.99, image: '🥚', availability: 'in_stock', points: 150, diet: 'veg' },
+          { id: 41, name: 'Neilson 2% Milk', size: '4L', price: 6.49, image: '🥛', availability: 'in_stock', points: 200, diet: 'veg' },
+          { id: 42, name: 'PC Greek Yogurt Plain', size: '750g', price: 5.49, image: '🥛', availability: 'in_stock', points: 160, diet: 'veg' },
         ],
       },
       {
         name: 'Bread & Cereal', emoji: '🍞',
         items: [
-          { id: 43, name: 'Wonder Bread White', size: '675g', price: 3.49, image: '🍞', availability: 'in_stock', points: 100 },
-          { id: 44, name: 'Quaker Oats', size: '1kg', price: 5.99, image: '🥣', availability: 'in_stock', points: 175 },
+          { id: 43, name: 'Wonder Bread White', size: '675g', price: 3.49, image: '🍞', availability: 'in_stock', points: 100, diet: 'veg' },
+          { id: 44, name: 'Quaker Oats', size: '1kg', price: 5.99, image: '🥣', availability: 'in_stock', points: 175, diet: 'vegan' },
         ],
       },
       {
         name: 'Fruit', emoji: '🍓',
         items: [
-          { id: 45, name: 'Banana', size: '1 bunch', price: 0.69, image: '🍌', availability: 'in_stock', points: 25 },
-          { id: 46, name: 'Blueberries', size: '312g', price: 4.99, image: '🫐', availability: 'in_stock', points: 150 },
-          { id: 47, name: 'Strawberries', size: '454g', price: 5.49, image: '🍓', availability: 'low_stock', points: 160 },
+          { id: 45, name: 'Banana', size: '1 bunch', price: 0.69, image: '🍌', availability: 'in_stock', points: 25, diet: 'vegan' },
+          { id: 46, name: 'Blueberries', size: '312g', price: 4.99, image: '🫐', availability: 'in_stock', points: 150, diet: 'vegan' },
+          { id: 47, name: 'Strawberries', size: '454g', price: 5.49, image: '🍓', availability: 'low_stock', points: 160, diet: 'vegan' },
         ],
       },
       {
         name: 'Spreads', emoji: '🧈',
         items: [
-          { id: 48, name: 'Beatrice Butter Salted', size: '454g', price: 5.99, image: '🧈', availability: 'in_stock', points: 175 },
-          { id: 49, name: 'Kraft Peanut Butter', size: '750g', price: 6.49, image: '🥜', availability: 'in_stock', points: 190 },
+          { id: 48, name: 'Beatrice Butter Salted', size: '454g', price: 5.99, image: '🧈', availability: 'in_stock', points: 175, diet: 'veg' },
+          { id: 49, name: 'Kraft Peanut Butter', size: '750g', price: 6.49, image: '🥜', availability: 'in_stock', points: 190, diet: 'vegan' },
         ],
       },
     ],
@@ -165,30 +168,30 @@ export const aiSearchResults: Record<string, AISearchResult> = {
       {
         name: 'Protein', emoji: '🍗',
         items: [
-          { id: 80, name: 'PC Chicken Breast Boneless', size: 'per kg', price: 14.99, image: '🍗', availability: 'in_stock', points: 400 },
+          { id: 80, name: 'PC Chicken Breast Boneless', size: 'per kg', price: 14.99, image: '🍗', availability: 'in_stock', points: 400, diet: 'non-veg' },
         ],
       },
       {
         name: 'Vegetables', emoji: '🥦',
         items: [
-          { id: 81, name: 'Broccoli', size: 'each', price: 2.99, image: '🥦', availability: 'in_stock', points: 90 },
-          { id: 82, name: 'Red Bell Pepper', size: 'each', price: 1.99, image: '🫑', availability: 'in_stock', points: 60 },
-          { id: 83, name: 'Snow Peas', size: '227g', price: 3.49, image: '🫛', availability: 'in_stock', points: 100 },
-          { id: 84, name: 'Carrots', size: '2 lb bag', price: 2.49, image: '🥕', availability: 'in_stock', points: 75 },
+          { id: 81, name: 'Broccoli', size: 'each', price: 2.99, image: '🥦', availability: 'in_stock', points: 90, diet: 'vegan' },
+          { id: 82, name: 'Red Bell Pepper', size: 'each', price: 1.99, image: '🫑', availability: 'in_stock', points: 60, diet: 'vegan' },
+          { id: 83, name: 'Snow Peas', size: '227g', price: 3.49, image: '🫛', availability: 'in_stock', points: 100, diet: 'vegan' },
+          { id: 84, name: 'Carrots', size: '2 lb bag', price: 2.49, image: '🥕', availability: 'in_stock', points: 75, diet: 'vegan' },
         ],
       },
       {
         name: 'Sauce & Seasoning', emoji: '🫙',
         items: [
-          { id: 85, name: 'VH Stir Fry Sauce', size: '355ml', price: 3.99, image: '🥫', availability: 'in_stock', points: 120 },
-          { id: 86, name: 'Kikkoman Soy Sauce', size: '591ml', price: 4.49, image: '🍶', availability: 'in_stock', points: 130 },
+          { id: 85, name: 'VH Stir Fry Sauce', size: '355ml', price: 3.99, image: '🥫', availability: 'in_stock', points: 120, diet: 'vegan' },
+          { id: 86, name: 'Kikkoman Soy Sauce', size: '591ml', price: 4.49, image: '🍶', availability: 'in_stock', points: 130, diet: 'vegan' },
         ],
       },
       {
         name: 'Rice & Noodles', emoji: '🍚',
         items: [
-          { id: 87, name: 'PC Jasmine Rice', size: '900g', price: 3.99, image: '🍚', availability: 'in_stock', points: 120 },
-          { id: 88, name: 'PC Sesame Oil', size: '250ml', price: 4.99, image: '🫒', availability: 'in_stock', points: 150 },
+          { id: 87, name: 'PC Jasmine Rice', size: '900g', price: 3.99, image: '🍚', availability: 'in_stock', points: 120, diet: 'vegan' },
+          { id: 88, name: 'PC Sesame Oil', size: '250ml', price: 4.99, image: '🫒', availability: 'in_stock', points: 150, diet: 'vegan' },
         ],
       },
     ],
@@ -200,30 +203,30 @@ export const aiSearchResults: Record<string, AISearchResult> = {
       {
         name: 'Protein', emoji: '🍗',
         items: [
-          { id: 300, name: 'PC Chicken Thighs Boneless', size: 'per kg', price: 11.99, image: '🦵', availability: 'in_stock', points: 350 },
+          { id: 300, name: 'PC Chicken Thighs Boneless', size: 'per kg', price: 11.99, image: '🦵', availability: 'in_stock', points: 350, diet: 'non-veg' },
         ],
       },
       {
         name: 'Curry Base', emoji: '🍛',
         items: [
-          { id: 301, name: 'Thai Kitchen Green Curry Paste', size: '112g', price: 3.99, image: '🌶️', availability: 'in_stock', points: 120 },
-          { id: 302, name: 'Thai Kitchen Coconut Milk', size: '400ml', price: 2.49, image: '🥥', availability: 'in_stock', points: 75 },
-          { id: 303, name: 'Fish Sauce', size: '200ml', price: 3.49, image: '🍶', availability: 'in_stock', points: 100 },
+          { id: 301, name: 'Thai Kitchen Green Curry Paste', size: '112g', price: 3.99, image: '🌶️', availability: 'in_stock', points: 120, diet: 'vegan' },
+          { id: 302, name: 'Thai Kitchen Coconut Milk', size: '400ml', price: 2.49, image: '🥥', availability: 'in_stock', points: 75, diet: 'vegan' },
+          { id: 303, name: 'Fish Sauce', size: '200ml', price: 3.49, image: '🍶', availability: 'in_stock', points: 100, diet: 'non-veg' },
         ],
       },
       {
         name: 'Vegetables', emoji: '🥬',
         items: [
-          { id: 304, name: 'Thai Basil', size: 'bunch', price: 2.49, image: '🌿', availability: 'in_stock', points: 75 },
-          { id: 305, name: 'Red Bell Pepper', size: 'each', price: 1.99, image: '🫑', availability: 'in_stock', points: 60 },
-          { id: 306, name: 'Bamboo Shoots', size: '227g can', price: 1.99, image: '🎋', availability: 'in_stock', points: 60 },
-          { id: 307, name: 'Baby Bok Choy', size: '300g', price: 2.99, image: '🥬', availability: 'low_stock', points: 90 },
+          { id: 304, name: 'Thai Basil', size: 'bunch', price: 2.49, image: '🌿', availability: 'in_stock', points: 75, diet: 'vegan' },
+          { id: 305, name: 'Red Bell Pepper', size: 'each', price: 1.99, image: '🫑', availability: 'in_stock', points: 60, diet: 'vegan' },
+          { id: 306, name: 'Bamboo Shoots', size: '227g can', price: 1.99, image: '🎋', availability: 'in_stock', points: 60, diet: 'vegan' },
+          { id: 307, name: 'Baby Bok Choy', size: '300g', price: 2.99, image: '🥬', availability: 'low_stock', points: 90, diet: 'vegan' },
         ],
       },
       {
         name: 'Rice', emoji: '🍚',
         items: [
-          { id: 308, name: 'PC Jasmine Rice', size: '900g', price: 3.99, image: '🍚', availability: 'in_stock', points: 120 },
+          { id: 308, name: 'PC Jasmine Rice', size: '900g', price: 3.99, image: '🍚', availability: 'in_stock', points: 120, diet: 'vegan' },
         ],
       },
     ],
@@ -235,32 +238,32 @@ export const aiSearchResults: Record<string, AISearchResult> = {
       {
         name: 'Dough & Base', emoji: '🍕',
         items: [
-          { id: 310, name: 'PC Pizza Dough', size: '450g', price: 3.49, image: '🍕', availability: 'in_stock', points: 100 },
-          { id: 311, name: 'Classico Pizza Sauce', size: '396ml', price: 3.29, image: '🫙', availability: 'in_stock', points: 100 },
+          { id: 310, name: 'PC Pizza Dough', size: '450g', price: 3.49, image: '🍕', availability: 'in_stock', points: 100, diet: 'veg' },
+          { id: 311, name: 'Classico Pizza Sauce', size: '396ml', price: 3.29, image: '🫙', availability: 'in_stock', points: 100, diet: 'vegan' },
         ],
       },
       {
         name: 'Cheese', emoji: '🧀',
         items: [
-          { id: 312, name: 'PC Shredded Mozzarella', size: '320g', price: 5.49, image: '🧀', availability: 'in_stock', points: 160 },
-          { id: 313, name: 'Parmesan Cheese Grated', size: '250g', price: 7.99, image: '🧀', availability: 'in_stock', points: 240 },
+          { id: 312, name: 'PC Shredded Mozzarella', size: '320g', price: 5.49, image: '🧀', availability: 'in_stock', points: 160, diet: 'veg' },
+          { id: 313, name: 'Parmesan Cheese Grated', size: '250g', price: 7.99, image: '🧀', availability: 'in_stock', points: 240, diet: 'veg' },
         ],
       },
       {
         name: 'Toppings', emoji: '🫒',
         items: [
-          { id: 314, name: 'PC Pepperoni Sliced', size: '250g', price: 5.49, image: '🥓', availability: 'in_stock', points: 160 },
-          { id: 315, name: 'Mushrooms White', size: '227g', price: 2.99, image: '🍄', availability: 'in_stock', points: 90 },
-          { id: 316, name: 'Green Bell Pepper', size: 'each', price: 1.49, image: '🫑', availability: 'in_stock', points: 45 },
-          { id: 317, name: 'Black Olives Sliced', size: '375ml', price: 2.99, image: '🫒', availability: 'in_stock', points: 90 },
-          { id: 318, name: 'Red Onion', size: 'each', price: 0.99, image: '🟣', availability: 'in_stock', points: 30 },
+          { id: 314, name: 'PC Pepperoni Sliced', size: '250g', price: 5.49, image: '🥓', availability: 'in_stock', points: 160, diet: 'non-veg' },
+          { id: 315, name: 'Mushrooms White', size: '227g', price: 2.99, image: '🍄', availability: 'in_stock', points: 90, diet: 'vegan' },
+          { id: 316, name: 'Green Bell Pepper', size: 'each', price: 1.49, image: '🫑', availability: 'in_stock', points: 45, diet: 'vegan' },
+          { id: 317, name: 'Black Olives Sliced', size: '375ml', price: 2.99, image: '🫒', availability: 'in_stock', points: 90, diet: 'vegan' },
+          { id: 318, name: 'Red Onion', size: 'each', price: 0.99, image: '🟣', availability: 'in_stock', points: 30, diet: 'vegan' },
         ],
       },
       {
         name: 'Extras', emoji: '🌿',
         items: [
-          { id: 319, name: 'Fresh Basil', size: 'bunch', price: 2.49, image: '🌿', availability: 'in_stock', points: 75 },
-          { id: 320, name: 'Olive Oil Extra Virgin', size: '500ml', price: 6.99, image: '🫒', availability: 'in_stock', points: 210 },
+          { id: 319, name: 'Fresh Basil', size: 'bunch', price: 2.49, image: '🌿', availability: 'in_stock', points: 75, diet: 'vegan' },
+          { id: 320, name: 'Olive Oil Extra Virgin', size: '500ml', price: 6.99, image: '🫒', availability: 'in_stock', points: 210, diet: 'vegan' },
         ],
       },
     ],
@@ -272,36 +275,114 @@ export const aiSearchResults: Record<string, AISearchResult> = {
       {
         name: 'Pasta', emoji: '🍝',
         items: [
-          { id: 330, name: 'Barilla Penne Rigate', size: '454g', price: 2.49, image: '🍝', availability: 'in_stock', points: 75 },
-          { id: 331, name: 'Barilla Spaghetti', size: '454g', price: 2.49, image: '🍝', availability: 'in_stock', points: 75 },
+          { id: 330, name: 'Barilla Penne Rigate', size: '454g', price: 2.49, image: '🍝', availability: 'in_stock', points: 75, diet: 'vegan' },
+          { id: 331, name: 'Barilla Spaghetti', size: '454g', price: 2.49, image: '🍝', availability: 'in_stock', points: 75, diet: 'vegan' },
         ],
       },
       {
         name: 'Sauce', emoji: '🫙',
         items: [
-          { id: 332, name: 'Classico Tomato Basil Sauce', size: '650ml', price: 3.99, image: '🫙', availability: 'in_stock', points: 120 },
-          { id: 333, name: 'Crushed Tomatoes', size: '796ml', price: 2.49, image: '🍅', availability: 'in_stock', points: 75 },
+          { id: 332, name: 'Classico Tomato Basil Sauce', size: '650ml', price: 3.99, image: '🫙', availability: 'in_stock', points: 120, diet: 'vegan' },
+          { id: 333, name: 'Crushed Tomatoes', size: '796ml', price: 2.49, image: '🍅', availability: 'in_stock', points: 75, diet: 'vegan' },
         ],
       },
       {
         name: 'Produce', emoji: '🧄',
         items: [
-          { id: 334, name: 'Garlic', size: '3 pack', price: 1.49, image: '🧄', availability: 'in_stock', points: 45 },
-          { id: 335, name: 'Fresh Basil', size: 'bunch', price: 2.49, image: '🌿', availability: 'in_stock', points: 75 },
-          { id: 336, name: 'Yellow Onion', size: 'each', price: 0.99, image: '🧅', availability: 'in_stock', points: 30 },
+          { id: 334, name: 'Garlic', size: '3 pack', price: 1.49, image: '🧄', availability: 'in_stock', points: 45, diet: 'vegan' },
+          { id: 335, name: 'Fresh Basil', size: 'bunch', price: 2.49, image: '🌿', availability: 'in_stock', points: 75, diet: 'vegan' },
+          { id: 336, name: 'Yellow Onion', size: 'each', price: 0.99, image: '🧅', availability: 'in_stock', points: 30, diet: 'vegan' },
         ],
       },
       {
         name: 'Dairy & Extras', emoji: '🧀',
         items: [
-          { id: 337, name: 'Parmesan Cheese', size: '250g', price: 7.99, image: '🧀', availability: 'in_stock', points: 240 },
-          { id: 338, name: 'Olive Oil Extra Virgin', size: '500ml', price: 6.99, image: '🫒', availability: 'in_stock', points: 210 },
-          { id: 339, name: 'PC Garlic Bread Frozen', size: '340g', price: 3.99, image: '🍞', availability: 'in_stock', points: 120 },
+          { id: 337, name: 'Parmesan Cheese', size: '250g', price: 7.99, image: '🧀', availability: 'in_stock', points: 240, diet: 'veg' },
+          { id: 338, name: 'Olive Oil Extra Virgin', size: '500ml', price: 6.99, image: '🫒', availability: 'in_stock', points: 210, diet: 'vegan' },
+          { id: 339, name: 'PC Garlic Bread Frozen', size: '340g', price: 3.99, image: '🍞', availability: 'in_stock', points: 120, diet: 'veg' },
         ],
       },
     ],
   },
 };
+
+// Broken mode results — flat lists of irrelevant packaged products (mimics real Loblaws.ca)
+export const brokenSearchResults: Record<string, Product[]> = {
+  'thai green curry': [
+    { id: 500, name: 'Thai Kitchen Green Curry Paste', size: '112g', price: 3.99, image: '🥫', availability: 'in_stock', points: 120 },
+    { id: 501, name: 'PC Thai Green Curry Sauce', size: '350ml', price: 4.49, image: '🥫', availability: 'in_stock', points: 130 },
+    { id: 502, name: 'Blue Dragon Green Curry Paste', size: '285g', price: 5.99, image: '🥫', availability: 'in_stock', points: 175 },
+    { id: 503, name: "Patak's Thai Green Curry Simmer Sauce", size: '400ml', price: 4.99, image: '🥫', availability: 'in_stock', points: 150 },
+    { id: 504, name: 'PC Thai Coconut Curry Soup', size: '540ml', price: 3.49, image: '🥫', availability: 'in_stock', points: 100 },
+    { id: 505, name: 'Thai Kitchen Coconut Cream', size: '160ml', price: 2.99, image: '🥫', availability: 'in_stock', points: 90 },
+    { id: 506, name: 'Blue Dragon Sweet Chili Sauce', size: '380ml', price: 4.49, image: '🥫', availability: 'low_stock', points: 130, sponsored: true },
+    { id: 507, name: "Sharwood's Green Curry Cooking Sauce", size: '395g', price: 3.99, image: '🥫', availability: 'in_stock', points: 120 },
+  ],
+  'pizza': [
+    { id: 510, name: 'Dr. Oetker Ristorante Pizza Pepperoni', size: '320g', price: 5.99, image: '🍕', availability: 'in_stock', points: 175, sponsored: true },
+    { id: 511, name: 'Dr. Oetker Ristorante Mozzarella', size: '325g', price: 5.99, image: '🍕', availability: 'in_stock', points: 175 },
+    { id: 512, name: 'Delissio Rising Crust Pepperoni', size: '788g', price: 8.49, image: '🍕', availability: 'in_stock', points: 250 },
+    { id: 513, name: 'Dr. Oetker Casa di Mama Pizza', size: '395g', price: 6.49, image: '🍕', availability: 'in_stock', points: 190 },
+    { id: 514, name: 'PC Thin Crust Margherita Pizza', size: '370g', price: 5.49, image: '🍕', availability: 'low_stock', points: 160, sponsored: true },
+    { id: 515, name: 'Delissio Thin Crust Vegetable', size: '547g', price: 7.99, image: '🍕', availability: 'in_stock', points: 240 },
+    { id: 516, name: "McCain's Pizza Pockets Pepperoni", size: '6 pack', price: 6.99, image: '🍕', availability: 'in_stock', points: 210 },
+    { id: 517, name: 'Pillsbury Pizza Pops', size: '4 pack', price: 4.99, image: '🍕', availability: 'in_stock', points: 150 },
+  ],
+  'red sauce pasta': [
+    { id: 520, name: 'Classico Tomato Basil Pasta Sauce', size: '650ml', price: 3.99, image: '🥫', availability: 'in_stock', points: 120 },
+    { id: 521, name: "Ragu Traditional Sauce", size: '640ml', price: 3.49, image: '🥫', availability: 'in_stock', points: 100 },
+    { id: 522, name: 'Prego Traditional Italian Sauce', size: '645ml', price: 3.99, image: '🥫', availability: 'in_stock', points: 120, sponsored: true },
+    { id: 523, name: "Catelli Garden Select Tomato", size: '640ml', price: 3.29, image: '🥫', availability: 'in_stock', points: 100 },
+    { id: 524, name: 'PC Roasted Garlic Pasta Sauce', size: '700ml', price: 4.49, image: '🥫', availability: 'in_stock', points: 130 },
+    { id: 525, name: 'Classico Spicy Red Pepper Sauce', size: '650ml', price: 3.99, image: '🥫', availability: 'low_stock', points: 120, sponsored: true },
+    { id: 526, name: "Hunt's Thick & Rich Pasta Sauce", size: '680ml', price: 2.99, image: '🥫', availability: 'in_stock', points: 90 },
+    { id: 527, name: 'Bertolli Marinara Sauce', size: '680ml', price: 5.49, image: '🥫', availability: 'in_stock', points: 160 },
+  ],
+  'stuff for tacos': [
+    { id: 530, name: 'Old El Paso Taco Shells Stand \'n Stuff', size: '10 pack', price: 4.49, image: '🌮', availability: 'in_stock', points: 130, sponsored: true },
+    { id: 531, name: 'Old El Paso Hard Taco Shells', size: '12 pack', price: 3.99, image: '🌮', availability: 'in_stock', points: 120 },
+    { id: 532, name: 'Old El Paso Soft Taco Kit', size: '8 pack', price: 5.49, image: '🌮', availability: 'in_stock', points: 160 },
+    { id: 533, name: 'Old El Paso Taco Seasoning Mix', size: '24g', price: 1.99, image: '🌶️', availability: 'in_stock', points: 60 },
+    { id: 534, name: 'PC Blue Menu Whole Wheat Tortillas', size: '10 pack', price: 4.29, image: '🌮', availability: 'in_stock', points: 125 },
+    { id: 535, name: 'Old El Paso Refried Beans', size: '398ml', price: 2.49, image: '🥫', availability: 'low_stock', points: 75 },
+    { id: 536, name: 'Tostitos Restaurant Style Tortilla Chips', size: '275g', price: 4.99, image: '🍟', availability: 'in_stock', points: 150, sponsored: true },
+    { id: 537, name: 'Old El Paso Taco Sauce Medium', size: '200ml', price: 3.49, image: '🥫', availability: 'in_stock', points: 100 },
+  ],
+  'chicken stir fry': [
+    { id: 540, name: 'PC Chicken Breast Boneless', size: 'per kg', price: 14.99, image: '🍗', availability: 'in_stock', points: 400 },
+    { id: 541, name: 'VH Teriyaki Stir Fry Sauce', size: '355ml', price: 3.99, image: '🥫', availability: 'in_stock', points: 120, sponsored: true },
+    { id: 542, name: 'VH Pad Thai Sauce', size: '341ml', price: 4.49, image: '🥫', availability: 'in_stock', points: 130 },
+    { id: 543, name: 'Kikkoman Stir Fry Seasoning Mix', size: '28g', price: 1.99, image: '🥫', availability: 'in_stock', points: 60 },
+    { id: 544, name: 'PC Chicken Thighs Boneless', size: 'per kg', price: 11.99, image: '🍗', availability: 'in_stock', points: 350 },
+    { id: 545, name: 'PC Stir Fry Vegetable Blend Frozen', size: '500g', price: 3.99, image: '🥦', availability: 'in_stock', points: 120 },
+    { id: 546, name: 'VH General Tao Sauce', size: '341ml', price: 3.99, image: '🥫', availability: 'low_stock', points: 120, sponsored: true },
+    { id: 547, name: 'Blue Dragon Sweet Chili Stir Fry Sauce', size: '150ml', price: 3.49, image: '🥫', availability: 'in_stock', points: 100 },
+  ],
+  'breakfast': [
+    { id: 550, name: 'Quaker Instant Oatmeal Variety Pack', size: '380g', price: 5.99, image: '🥣', availability: 'in_stock', points: 175, sponsored: true },
+    { id: 551, name: 'Kellogg\'s Corn Flakes', size: '680g', price: 5.49, image: '🥣', availability: 'in_stock', points: 160 },
+    { id: 552, name: "Nature's Path Organic Granola", size: '750g', price: 7.99, image: '🥣', availability: 'in_stock', points: 240 },
+    { id: 553, name: 'General Mills Cheerios', size: '430g', price: 5.49, image: '🥣', availability: 'in_stock', points: 160 },
+    { id: 554, name: 'PC Blue Menu Oat Bran Flakes', size: '425g', price: 4.99, image: '🥣', availability: 'in_stock', points: 150 },
+    { id: 555, name: 'Kellogg\'s Special K Protein', size: '349g', price: 5.99, image: '🥣', availability: 'low_stock', points: 175 },
+    { id: 556, name: 'Eggo Waffles Homestyle', size: '10 pack', price: 4.49, image: '🧇', availability: 'in_stock', points: 130, sponsored: true },
+    { id: 557, name: 'Pop-Tarts Strawberry', size: '8 pack', price: 4.99, image: '🍓', availability: 'in_stock', points: 150 },
+  ],
+};
+
+export function getBrokenResult(query: string): Product[] | null {
+  const lower = query.toLowerCase().trim();
+  for (const [key, results] of Object.entries(brokenSearchResults)) {
+    if (lower.includes(key) || key.includes(lower)) return results;
+  }
+  if (lower.includes('taco')) return brokenSearchResults['stuff for tacos'];
+  if (lower.includes('breakfast')) return brokenSearchResults['breakfast'];
+  if (lower.includes('stir fry') || lower.includes('stirfry')) return brokenSearchResults['chicken stir fry'];
+  if (lower.includes('thai') || lower.includes('green curry') || lower.includes('curry')) return brokenSearchResults['thai green curry'];
+  if (lower.includes('pizza')) return brokenSearchResults['pizza'];
+  if (lower.includes('red sauce') || lower.includes('pasta') || lower.includes('spaghetti') || lower.includes('penne')) return brokenSearchResults['red sauce pasta'];
+  return null;
+}
 
 // NLP trigger patterns
 const aiTriggerPatterns = [

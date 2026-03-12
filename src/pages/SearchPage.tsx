@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback } from 'react';
 import { useStore } from '../store';
-import { isAIQuery, getAIResult, getSearchResult, regulars } from '../data/products';
+import { isAIQuery, getAIResult, getSearchResult, getBrokenResult, regulars } from '../data/products';
 import type { Product, AISearchResult } from '../data/products';
 import RegularsRow from '../components/search/RegularsRow';
 import RecentSearches from '../components/search/RecentSearches';
@@ -13,6 +13,7 @@ export default function SearchPage() {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [searchResults, setSearchResults] = useState<{ organic: Product[]; sponsored: Product[] } | null>(null);
   const [aiResult, setAiResult] = useState<AISearchResult | null>(null);
+  const [brokenResults, setBrokenResults] = useState<Product[] | null>(null);
   const [isSearching, setIsSearching] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -44,6 +45,7 @@ export default function SearchPage() {
     if (!q.trim()) {
       setSearchResults(null);
       setAiResult(null);
+      setBrokenResults(null);
       setHasSearched(false);
       return;
     }
@@ -57,6 +59,13 @@ export default function SearchPage() {
         const ai = getAIResult(q);
         setAiResult(ai);
         setSearchResults(null);
+        setBrokenResults(null);
+      } else if (searchMode === 'broken' && isAIQuery(q)) {
+        // Broken mode for recipe queries: show flat list of irrelevant packaged products
+        const broken = getBrokenResult(q);
+        setBrokenResults(broken);
+        setSearchResults(null);
+        setAiResult(null);
       } else {
         const results = getSearchResult(q);
         if (results && searchMode === 'broken') {
@@ -66,6 +75,7 @@ export default function SearchPage() {
           setSearchResults(results);
         }
         setAiResult(null);
+        setBrokenResults(null);
       }
       setIsSearching(false);
       setHasSearched(true);
@@ -114,7 +124,7 @@ export default function SearchPage() {
           {query && (
             <button
               type="button"
-              onClick={() => { setQuery(''); setSearchResults(null); setAiResult(null); setHasSearched(false); }}
+              onClick={() => { setQuery(''); setSearchResults(null); setAiResult(null); setBrokenResults(null); setHasSearched(false); }}
               className="pr-3 text-body"
             >
               ✕
@@ -171,6 +181,22 @@ export default function SearchPage() {
       {/* AI search results */}
       {aiResult && !isSearching && <AISearchResults result={aiResult} />}
 
+      {/* Broken mode: flat list of irrelevant packaged products */}
+      {brokenResults && !isSearching && (
+        <div className="px-4 pb-24">
+          <div className="bg-error-light rounded-lg p-3 mb-4 animate-fade-in">
+            <p className="text-xs text-error font-medium">
+              Showing {brokenResults.length} results for "{query}" — no smart grouping, mostly packaged products
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            {brokenResults.map((p, i) => (
+              <ProductCard key={p.id} product={p} index={i} />
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Standard search results */}
       {searchResults && !isSearching && (
         <div className="px-4 pb-24">
@@ -212,7 +238,7 @@ export default function SearchPage() {
       )}
 
       {/* No results */}
-      {hasSearched && !isSearching && !searchResults && !aiResult && (
+      {hasSearched && !isSearching && !searchResults && !aiResult && !brokenResults && (
         <div className="text-center py-12 px-4">
           <p className="text-3xl mb-2">🔍</p>
           <p className="text-sm text-body">No results for "{query}"</p>
