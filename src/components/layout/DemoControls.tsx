@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 export default function DemoControls() {
   const {
     activeTab, searchMode, setSearchMode,
-    checkoutScenario, setCheckoutScenario, resetCheckout, loadDemoCart,
+    checkoutScenario, setCheckoutScenario, resetCheckout,
     demoOpen, setDemoOpen,
     orderAttempts, issuesCaught, itemsRecovered,
     checkoutStartTime,
@@ -81,7 +81,7 @@ export default function DemoControls() {
                 ] as const).map(([key, label, desc]) => (
                   <button
                     key={key}
-                    onClick={() => { setCheckoutScenario(key); resetCheckout(); loadDemoCart(); }}
+                    onClick={() => { setCheckoutScenario(key); resetCheckout(); }}
                     className={`w-full text-left py-2 px-3 rounded-lg text-xs transition-colors ${
                       checkoutScenario === key
                         ? 'bg-info-light text-info border border-info'
@@ -118,10 +118,10 @@ export default function DemoControls() {
               </div>
 
               <button
-                onClick={() => { resetCheckout(); loadDemoCart(); }}
+                onClick={resetCheckout}
                 className="mt-3 w-full py-2 bg-bg text-body text-xs font-medium rounded-lg border border-border active:scale-97 transition-transform"
               >
-                Reset Cart
+                Reset Checkout
               </button>
             </div>
           )}
