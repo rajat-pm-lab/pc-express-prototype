@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useStore } from '../store';
-import { scenarioBValidation } from '../data/products';
+import { generateValidation } from '../data/products';
 import type { Product } from '../data/products';
 import ValidationLoader from '../components/checkout/ValidationLoader';
 import SubstitutePanel from '../components/checkout/SubstitutePanel';
@@ -26,11 +26,17 @@ export default function CheckoutPage() {
   const [removingIds, setRemovingIds] = useState<Set<number>>(new Set());
   const [shakeError, setShakeError] = useState(false);
 
+  // Generate validation dynamically based on current cart items
+  const validation = useMemo(
+    () => generateValidation(cart.map(c => c.product.id)),
+    [cart.map(c => c.product.id).join(',')]
+  );
+
   // Compute cart total accounting for price changes
   const cartTotal = cart.reduce((sum, c) => {
     let price = c.product.price;
     if (acceptedPriceChanges.has(c.product.id)) {
-      const vr = scenarioBValidation.find(v => v.itemId === c.product.id && v.newPrice);
+      const vr = validation.find(v => v.itemId === c.product.id && v.newPrice);
       if (vr?.newPrice) price = vr.newPrice;
     }
     return sum + price * c.quantity;
@@ -97,8 +103,8 @@ export default function CheckoutPage() {
   };
 
   // Check if all blockers resolved
-  const blockers = scenarioBValidation.filter(v => v.status === 'blocker');
-  const warnings = scenarioBValidation.filter(v => v.status === 'warning');
+  const blockers = validation.filter(v => v.status === 'blocker');
+  const warnings = validation.filter(v => v.status === 'warning');
   const allBlockersResolved = checkoutScenario === 'blockers'
     ? blockers.every(b => resolvedBlockers.has(b.itemId))
     : true;
@@ -408,12 +414,12 @@ export default function CheckoutPage() {
 
         {/* Clear items */}
         <h3 className="text-xs font-semibold text-success uppercase tracking-wider mb-2">
-          All Clear ({cart.filter(c => !scenarioBValidation.find(v => v.itemId === c.product.id && !resolvedBlockers.has(v.itemId) && !acceptedPriceChanges.has(v.itemId))).length} items)
+          All Clear ({cart.filter(c => !validation.find(v => v.itemId === c.product.id && !resolvedBlockers.has(v.itemId) && !acceptedPriceChanges.has(v.itemId))).length} items)
         </h3>
         <div className="space-y-1 mb-6">
           {cart
             .filter(c => {
-              const v = scenarioBValidation.find(v => v.itemId === c.product.id);
+              const v = validation.find(v => v.itemId === c.product.id);
               if (!v) return true;
               return resolvedBlockers.has(v.itemId) || acceptedPriceChanges.has(v.itemId);
             })

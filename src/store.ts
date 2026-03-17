@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import type { Product, MealPlan } from './data/products';
-import { checkoutCartItems, scenarioBValidation as validationData, generateMealPlan, altMeals } from './data/products';
+import { checkoutCartItems, generateValidation, generateMealPlan, altMeals } from './data/products';
 
 export interface CartItem {
   product: Product;
@@ -113,13 +113,13 @@ export const useStore = create<AppState>((set, get) => ({
   })),
   cartTotal: () => {
     const s = get();
+    const validationResults = generateValidation(s.cart.map(c => c.product.id));
     let total = 0;
     for (const item of s.cart) {
       let price = item.product.price;
       // If price was accepted as changed
       if (s.acceptedPriceChanges.has(item.product.id)) {
-        // Find the new price from validation
-        const vr = validationData.find(v => v.itemId === item.product.id && v.newPrice);
+        const vr = validationResults.find(v => v.itemId === item.product.id && v.newPrice);
         if (vr?.newPrice) price = vr.newPrice;
       }
       total += price * item.quantity;

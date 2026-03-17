@@ -655,24 +655,57 @@ export function generateMealPlan(numMeals: number, numPeople: number): MealPlan 
 
 // ===== End Meal Planning Data =====
 
-export const scenarioBValidation: ValidationResult[] = [
-  {
-    itemId: 12, status: 'blocker', reason: 'Out of stock at your store', type: 'out_of_stock',
-    substitutes: [
-      { id: 120, name: 'PC Chicken Thighs', size: 'per kg', price: 11.99, image: '🦵', availability: 'in_stock', points: 350 },
-      { id: 121, name: 'Maple Leaf Chicken Breast Frozen', size: '700g', price: 12.49, image: '🧊', availability: 'in_stock', points: 370 },
-      { id: 122, name: 'PC Blue Menu Chicken Strips', size: '600g', price: 13.99, image: '🥢', availability: 'low_stock', points: 420 },
-    ],
-  },
-  {
-    itemId: 9, status: 'blocker', reason: 'Out of stock at your store', type: 'out_of_stock',
-    substitutes: [
-      { id: 90, name: 'Old El Paso Flour Tortillas', size: '10 pack', price: 4.49, image: '🫓', availability: 'in_stock', points: 130 },
-      { id: 91, name: "Dempster's Tortillas", size: '10 pack', price: 3.99, image: '🥙', availability: 'in_stock', points: 120 },
-    ],
-  },
-  {
-    itemId: 10, status: 'warning', reason: 'Price changed since you added this item', type: 'price_changed',
-    oldPrice: 5.49, newPrice: 5.99,
-  },
-];
+// Generate validation results dynamically based on actual cart items
+export function generateValidation(cartItemIds: number[]): ValidationResult[] {
+  if (cartItemIds.length === 0) return [];
+
+  const results: ValidationResult[] = [];
+  const ids = [...cartItemIds];
+
+  // Pick first item as a blocker (out of stock)
+  if (ids.length >= 1) {
+    const itemId = ids[0];
+    results.push({
+      itemId,
+      status: 'blocker',
+      reason: 'Out of stock at your store',
+      type: 'out_of_stock',
+      substitutes: [
+        { id: 900, name: 'PC Organics Alternative', size: 'similar size', price: 4.99, image: '🌿', availability: 'in_stock', points: 200 },
+        { id: 901, name: 'No Name Value Pack', size: 'similar size', price: 3.49, image: '📦', availability: 'in_stock', points: 150 },
+      ],
+    });
+  }
+
+  // Pick middle item as second blocker (recalled) if cart has 3+ items
+  if (ids.length >= 3) {
+    const itemId = ids[Math.floor(ids.length / 2)];
+    results.push({
+      itemId,
+      status: 'blocker',
+      reason: 'Product recalled — safety notice',
+      type: 'out_of_stock',
+      substitutes: [
+        { id: 902, name: 'Store Brand Alternative', size: 'similar size', price: 5.49, image: '🏪', availability: 'in_stock', points: 180 },
+        { id: 903, name: 'PC Blue Menu Option', size: 'similar size', price: 6.99, image: '💙', availability: 'in_stock', points: 220 },
+      ],
+    });
+  }
+
+  // Pick last non-blocker item as a warning (price change)
+  const blockerIds = new Set(results.map(r => r.itemId));
+  const warningCandidates = ids.filter(id => !blockerIds.has(id));
+  if (warningCandidates.length > 0) {
+    const itemId = warningCandidates[warningCandidates.length - 1];
+    results.push({
+      itemId,
+      status: 'warning',
+      reason: 'Price changed since you added this item',
+      type: 'price_changed',
+      oldPrice: 5.49,
+      newPrice: 5.99,
+    });
+  }
+
+  return results;
+}
