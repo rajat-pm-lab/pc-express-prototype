@@ -15,7 +15,7 @@ export default function CheckoutPage() {
     setCheckoutStartTime,
     resolvedBlockers, resolveBlocker,
     acceptedPriceChanges, acceptPriceChange,
-    resetCheckout,
+    resetCheckout, loadDemoCart,
   } = useStore();
 
   const [substitutePanel, setSubstitutePanel] = useState<{
@@ -106,6 +106,23 @@ export default function CheckoutPage() {
     ? warnings.every(w => resolvedBlockers.has(w.itemId) || acceptedPriceChanges.has(w.itemId))
     : true;
   const canPlaceOrder = checkoutScenario !== 'blockers' || (allBlockersResolved && allWarningsResolved);
+
+  // ── EMPTY CART ──
+  if (checkoutPhase === 'cart' && cart.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center py-16 px-8">
+        <span className="text-5xl mb-4">🛒</span>
+        <h2 className="text-lg font-bold text-dark mb-2">Your cart is empty</h2>
+        <p className="text-xs text-body text-center mb-6">Add items from AI Search or Meal Planning, or load demo items to try the Checkout Guardian.</p>
+        <button
+          onClick={loadDemoCart}
+          className="py-3 px-6 rounded-xl bg-loblaws text-white font-semibold text-sm active:scale-97 transition-transform"
+        >
+          Load Demo Cart (8 items)
+        </button>
+      </div>
+    );
+  }
 
   // ── CART VIEW ──
   if (checkoutPhase === 'cart') {

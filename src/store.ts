@@ -40,6 +40,7 @@ interface AppState {
   orderAttempts: number;
   incrementAttempts: () => void;
   resetCheckout: () => void;
+  loadDemoCart: () => void;
 
   // Checkout stats
   issuesCaught: number;
@@ -142,6 +143,8 @@ export const useStore = create<AppState>((set, get) => ({
     checkoutStartTime: null,
     resolvedBlockers: new Set(),
     acceptedPriceChanges: new Set(),
+  }),
+  loadDemoCart: () => set({
     cart: checkoutCartItems.map(p => ({ product: p, quantity: p.id === 3 ? 2 : p.id === 4 ? 5 : p.id === 11 ? 2 : 1 })),
   }),
 

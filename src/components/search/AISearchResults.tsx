@@ -21,6 +21,7 @@ export default function AISearchResults({ result }: { result: AISearchResult }) 
       ? cat.items
       : cat.items.filter(item => {
           if (activeDiet === 'veg') return item.diet === 'veg' || item.diet === 'vegan';
+          if (activeDiet === 'non-veg') return true; // Non-veg includes everything
           return item.diet === activeDiet;
         }),
   })).filter(cat => cat.items.length > 0);

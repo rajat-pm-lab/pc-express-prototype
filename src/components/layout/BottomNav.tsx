@@ -7,7 +7,7 @@ const tabs = [
 ] as const;
 
 export default function BottomNav() {
-  const { activeTab, setActiveTab, cart, resetCheckout } = useStore();
+  const { activeTab, setActiveTab, cart } = useStore();
 
   return (
     <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] md:max-w-[768px] bg-white border-t border-border z-50">
@@ -18,7 +18,6 @@ export default function BottomNav() {
             <button
               key={tab.id}
               onClick={() => {
-                if (tab.id === 'checkout' && activeTab !== 'checkout') resetCheckout();
                 setActiveTab(tab.id);
               }}
               className={`flex-1 flex flex-col items-center py-2 text-xs transition-colors ${
