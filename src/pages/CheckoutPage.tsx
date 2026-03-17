@@ -227,6 +227,7 @@ export default function CheckoutPage() {
               onClick={() => {
                 useStore.getState().setCheckoutScenario('blockers');
                 resetCheckout();
+                loadDemoCart();
               }}
               className="text-xs text-info font-semibold underline mt-1"
             >
